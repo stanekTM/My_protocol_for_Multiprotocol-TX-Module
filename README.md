@@ -1,6 +1,6 @@
 # Custom FHSS protocol for DIY-Multiprotocol-TX-Module
 
-Added simple [**RF protocol**](Multiprotocol/STANEK_nrf24l01.ino) with frequency hopping (FHSS) and two-way telemetry (Auto-ACK Payload) for the nRF24L01+ transceiver.
+Added simple [**RF protocol**](Multiprotocol/STANEK_nrf24l01.ino) with frequency hopping (FHSS) and telemetry (Auto-ACK Payload) for the nRF24L01+ transceiver.
 
 * Rapid hopping between 4 strong RF channels (12, 40, 76, 88) outside the main WiFi frequencies.
 * Transmission rate of 1 Mbps (increased for full support of the newer nRF52 generation).
@@ -11,7 +11,7 @@ Added simple [**RF protocol**](Multiprotocol/STANEK_nrf24l01.ino) with frequency
 
 Support for custom DIY RC receivers from this repository [**RX_nRF24_FHSS**](https://github.com/stanekTM/RX_nRF24_FHSS)
 
-**Attention!** To select protocols and build firmware, use Arduino IDE version 1.8.19. Compiling with Arduino IDE version 2... has errors (I will investigate later).
+**Note:** To select protocols and build firmware, use Arduino IDE version 1.8.19. Compiling with Arduino IDE version 2... has errors (I will investigate later).
 #
 
 # Multiprotocol TX Module

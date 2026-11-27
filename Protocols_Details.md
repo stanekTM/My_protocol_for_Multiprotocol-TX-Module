@@ -967,7 +967,7 @@ Telemetry enabled for A1 (RxBatt), RSSI, TX_RSSI, TX_LQI and the S.Port sensors,
 
 The receiver options (outputs, telemetry, F.Port/S.Bus...) are set with the [FrSky ACCESS RX script](https://github.com/pascallanger/DIY-Multiprotocol-TX-Module/tree/master/Lua_scripts#frsky-access-rx).
 
-Option for this protocol corresponds to fine frequency tuning, as FrskyX. Check the [Frequency Tuning page](/docs/Frequency_Tuning.md) to determine it.
+Option for this protocol corresponds to fine frequency tuning, as FrskyX. Check the [Frequency Tuning page](/docs/Frequency_Tuning.md) to determine it. The Archer receivers (for example the Archer GR8) have a narrow receive filter: if one does not register or bind, the module's frequency is likely off and needs tuning.
 
 Bind: a receiver is registered to the module, then bound, both during the same bind:
 - put the receiver in register mode (RX6R: hold its bind button while powering it until the LEDs alternate; Archer Plus: see its manual) and start the bind on the radio
@@ -1198,7 +1198,7 @@ T-FHSS Surface. Models: Futaba T-FHSS surface receivers (cars, boats) like the R
 
 Failsafe and telemetry supported. Extended limits supported.
 
-RX output will match the Futaba standard servo throw, mid point and the channel order AETR independently of the input configuration AETR, RETA... unless if on OpenTX 2.3.3+ you use the "Disable channel mapping" feature on the GUI.
+RX output will match the Futaba standard servo throw, mid point.
 
 Option for this protocol corresponds to fine frequency tuning, the same value as for S-FHSS.
 
@@ -1208,12 +1208,18 @@ Telemetry: the receiver's voltage (A1) and link quality (RSSI), and its S.BUS2 s
 
 CH1|CH2|CH3|CH4|CH5|CH6|CH7|CH8
 ---|---|---|---|---|---|---|---
-A|E|T|R|CH5|CH6|CH7|CH8
+ST|THR|CH3|CH4|CH5|CH6|CH7|CH8
 
 CH1 to CH4 are sent every frame (3 ms), CH5 to CH8 one per frame.
 
 ### Sub_protocol TFHSS_SR - *2*
 T-FHSS SR (Super Response), the receiver bound in SR mode: frames every 1.2 ms, digital servos only. No telemetry. Otherwise as T-FHSS.
+
+CH1|CH2|CH3|CH4|CH5|CH6|CH7|CH8
+---|---|---|---|---|---|---|---
+ST|THR|CH3|CH4|NB_ST|NB_THR|NB_3|NB_4
+
+NB_ST..4: Set to 100% for Narrow-band servos (the "SR channels" of Futaba radios) associated to CH1..4
 
 ### Sub_protocol TFHSS_AIR - *3*
 T-FHSS Air. Models: Futaba T-FHSS Air receivers like the R3006SB and R3008SB.

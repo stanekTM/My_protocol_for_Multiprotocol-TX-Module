@@ -1,9 +1,9 @@
 /*
-***********************************************************************************************
-Simple RF protocol with frequency hopping (FHSS) and two-way telemetry (Auto-ACK Payload).
-***********************************************************************************************
+************************************************************************************************
+Simple RF protocol with frequency hopping (FHSS) and telemetry (Auto-ACK Payload)
+************************************************************************************************
 Rapid hopping between 4 strong RF channels (12, 40, 76, 88) outside the main WiFi frequencies.
-Transmission rate of 1 Mbps (increased for full support of the newer nRF52 generation).
+Transmission rate of 1 Mbps (for support of the newer nRF52 generation).
 Constant latency / period of 4.5 ms (222 Hz).
 The received telemetry displays the A1(A2) voltage and RSSI.
 
@@ -11,8 +11,8 @@ The received telemetry displays the A1(A2) voltage and RSSI.
 * In the "Option" menu, enter the number of channels that corresponds to the number of receiver
   outputs (from 2 to 14).
 
-Support for DIY receivers from this repository: https://github.com/stanekTM/RX_nRF24_FHSS
-***********************************************************************************************
+Support for DIY receivers from my repository: https://github.com/stanekTM/RX_nRF24_FHSS
+************************************************************************************************
 */
 
 #if defined(STANEK_NRF24L01_INO)
@@ -55,7 +55,7 @@ static void __attribute__((unused)) STANEK_RF_init()
   // 4. Protokolární konfigurace (řízení přenosových vlastností)
   NRF24L01_WriteReg(NRF24L01_01_EN_AA, 0x01); // Zapnuto hardwarové Auto-ACK na Pipe 0 pro příjem potvrzení a telemetrie
   NRF24L01_WriteReg(NRF24L01_04_SETUP_RETR, 0x00); // Vypnuto automatické opakování paketů (zajišťuje nulovou latenci)
-  NRF24L01_SetBitrate(NRF24L01_BR_1M); // Nastavení střední rychlosti 1 Mbps (250 kbps nRF52832 nepodporuje)
+  NRF24L01_SetBitrate(NRF24L01_BR_1M); // Přenosová rychlost 1 Mbps (pro podporu novější generace nRF52)
   NRF24L01_WriteReg(NRF24L01_05_RF_CH, STANEK_RF_CHANNELS[fhss_index]); // Nastavení startovního RF kanálu z FHSS tabulky
   
   // 5. Odemčení a zápis pokročilých funkcí (dynamická délka dat a ACK payload)

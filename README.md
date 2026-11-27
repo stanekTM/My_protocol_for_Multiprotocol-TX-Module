@@ -3,7 +3,7 @@
 Added simple [**RF protocol**](Multiprotocol/STANEK_nrf24l01.ino) with frequency hopping (FHSS) and telemetry (Auto-ACK Payload) for the nRF24L01+ transceiver.
 
 * Rapid hopping between 4 strong RF channels (12, 40, 76, 88) outside the main WiFi frequencies.
-* Transmission rate of 1 Mbps (increased for full support of the newer nRF52 generation).
+* Transmission rate of 1 Mbps (for support of the newer nRF52 generation).
 * Constant latency / period of 4.5 ms (222 Hz).
 * The received telemetry displays the A1(A2) voltage and RSSI.
 * The bind "Bnd" function saves the Fail-Safe positions for the servos into the receiver.
